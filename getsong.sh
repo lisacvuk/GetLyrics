@@ -1,4 +1,5 @@
 #!/bin/bash
+mkdir lyrics
 cd lyrics
 name=$1
 name="${name// /_}"
