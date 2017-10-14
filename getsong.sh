@@ -10,6 +10,10 @@ name=$1
 name="${name// /_}"
 song=$2
 song="${song// /_}"
-wget -q http://lyrics.wikia.com/wiki/$name:$song
-cd ..
-python3 getsong.py lyrics_raw/$name:$song lyrics/$name:$song
+if ( wget -q http://lyrics.wikia.com/wiki/$name:$song ) then
+  echo "Downloaded lyrics for $name:$song"
+  cd ..
+  python3 getsong.py lyrics_raw/$name:$song lyrics/$name:$song
+else
+  echo "Error with wget occured."
+fi
